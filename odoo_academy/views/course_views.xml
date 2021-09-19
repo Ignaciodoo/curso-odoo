@@ -20,9 +20,14 @@
                                 <field name='total_price' force_save='1'/>
                             </group>
                         </group>
+                        
                         <notebook>
-                            <page string='description'>
+                            <page string='Description'>
                                 <field name='description'/>
+                            </page>
+                            
+                            <page string='Sessions'>
+                                <field name='sessions_ids'/>
                             </page>
                         </notebook>
                     </sheet>
