@@ -22,7 +22,7 @@ class Course(models.Model):
     
     additional_fee = fields.Float(string='Additional Fee', default=10.00)
     
-    total_price = fields.Float(string='Total Rpice', readonly=True)
+    total_price = fields.Float(string='Total Price', readonly=True)
     
     @api.onchange('base_price', 'additional_fee')
     def _onchange_total_price(self):
@@ -34,5 +34,5 @@ class Course(models.Model):
     def check_add_fee(self):
         for record in self:
             if record.additional_fee < 10:
-                raise ValidationError('El costo adicional no puede ser menos de 10. Costo adicional actual: %s' %record.additional_fee)
+                raise ValidationError('El costo adicional no puede ser menos de 10. Valor ingresado: %s' %record.additional_fee)
         
