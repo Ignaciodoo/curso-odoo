@@ -34,7 +34,7 @@
             <field name='arch' type='xml'>
                 <tree string='Session List'>
                     <field name='name'/>
-                    <field name='nistructor_id'/>
+                    <field name='istructor_id'/>
                 </tree>
             </field>
         </record>
