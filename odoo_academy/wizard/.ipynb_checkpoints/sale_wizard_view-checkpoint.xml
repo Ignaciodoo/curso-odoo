@@ -33,10 +33,10 @@
         -->
         <record id='launch_sale_wizard' model='ir.actions.act_window'>
             <field name='name'>Create Sale Order</field>
+            <field name='binding_model_id' ref='model_academy_session'/>
             <field name='res_model'>academy.sale.wizard</field>
             <field name='view_mode'>form</field>
             <field name='target'>new</field>
-            <field name='binding_model_id' ref='model_academy_session'/>
         </record>
     </data>
 </odoo>

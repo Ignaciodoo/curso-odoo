@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
 
 class Course(models.Model):
     _name = 'academy.course'
     _description = 'Course Info'
     
-    name = fields.Char(string='Titulo', required=True)
+    name = fields.Char(string='Title', required=True)
     
-    description = fields.Text(string = 'Descripcion')
+    description = fields.Text(string = 'Description')
     
     level = fields.Selection(string='Level',
-                            selection= [('principiante', 'Principiante'),
-                                       ('intermedio', 'Intermedio'),
-                                       ('avanzado', 'Avanzado')],
+                            selection= [('begginer', 'Begginer'),
+                                       ('intermediate', 'Intermediate'),
+                                       ('advanced', 'Advanced')],
                             copy=False)
     active = fields.Boolean(string='Active', default=True)
     
@@ -31,12 +31,12 @@ class Course(models.Model):
     @api.onchange('base_price', 'additional_fee')
     def _onchange_total_price(self):
         if self.base_price < 0:
-            raise UserError('El precio base no puede ser negativo.')
+            raise UserError(_('Base price cannot be negative'))
         self.total_price = self.base_price + self.additional_fee
     
     @api.constrains('additional_fee')
     def check_add_fee(self):
         for record in self:
             if record.additional_fee < 10:
-                raise ValidationError('El costo adicional no puede ser menos de 10. Valor ingresado: %s' %record.additional_fee)
+                raise ValidationError(_('Additional fee cannot be less than 10. Entered value: %s' %record.additional_fee))
         
